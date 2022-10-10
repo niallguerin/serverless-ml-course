@@ -196,7 +196,7 @@ import numpy as np
 from PIL import Image
 import requests
 
-def iris(sepal_length, sepal_width, petal_length, petal_width):
+def iris_fetch_flower_type(sepal_length, sepal_width, petal_length, petal_width):
     input_list = []
     input_list.append(sepal_length)
     input_list.append(sepal_width)
@@ -210,46 +210,13 @@ def iris(sepal_length, sepal_width, petal_length, petal_width):
     flower_url = "https://raw.githubusercontent.com/featurestoreorg/serverless-ml-course/main/src/01-module/assets/" + res[0] + ".png"
     img = Image.open(requests.get(flower_url, stream=True).raw)            
     return img
-        
-# demo = gr.Interface(
-#     fn=iris,
-#     title="Iris Flower Predictive Analytics",
-#     description="Experiment with sepal/petal lengths/widths to predict which flower it is.",
-#     allow_flagging="never",
-#     inputs=[
-#         gr.inputs.Number(default=1.0, label="sepal length (cm)"),
-#         gr.inputs.Number(default=1.0, label="sepal width (cm)"),
-#         gr.inputs.Number(default=1.0, label="petal length (cm)"),
-#         gr.inputs.Number(default=1.0, label="petal width (cm)"),
-#         ],
-#     outputs=gr.Image(type="pil"))
-#
-# demo.launch(share=True)
 
 # streamlit ui experiment for fun - reuse Serverless ML code from function and just follow streamlit docs
-# one of the optional tasks for week1 homework exercise for this project. Add a streamlit ui versus a gradio ui shown in default notebook
-# streamlit according to their own docs is not workable inside jupyter notebook so ran this as a .python file per section.io tutorial and it runs fine
-# modified the url path to point to my github forked repo from featurestore.org main serverless-ml course for the original python notebook
-# commented out dataframe print options so it just renders streamlit ui only and not the dataframe sections
 st.title("Iris Flower Predictive Analytics - Streamlit UI")
 st.subheader("Experiment with sepal/petal lengths/widths to predict which flower it is.")
 sepal_length = st.number_input("Enter sepal length")
 sepal_width = st.number_input("Enter sepal width")
 petal_length = st.number_input("Enter petal length")
 petal_width = st.number_input("Enter petal width")
-
-input_list = []
-input_list.append(sepal_length)
-input_list.append(sepal_width)
-input_list.append(petal_length)
-input_list.append(petal_width)
-res = model.predict(np.asarray(input_list).reshape(1, -1))
-# refactored to use my github repo copy and not the class repo for featurestore
-flower_url = "https://raw.githubusercontent.com/niallguerin/serverless-ml-course/main/src/01-module/assets/" + res[
-    0] + ".png"
-img = Image.open(requests.get(flower_url, stream=True).raw)
+img = iris_fetch_flower_type(sepal_length, sepal_width, petal_length, petal_width)
 st.image(img, caption="The predicted flower is:")
-
-# Web References
-# https://www.section.io/engineering-education/streamlit-ui-tutorial/
-# https://docs.streamlit.io/library/api-reference/media/st.image
