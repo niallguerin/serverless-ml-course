@@ -251,5 +251,5 @@ img = Image.open(requests.get(flower_url, stream=True).raw)
 st.image(img, caption="The predicted flower is:")
 
 # Web References
-https://www.section.io/engineering-education/streamlit-ui-tutorial/
-https://docs.streamlit.io/library/api-reference/media/st.image
+# https://www.section.io/engineering-education/streamlit-ui-tutorial/
+# https://docs.streamlit.io/library/api-reference/media/st.image
