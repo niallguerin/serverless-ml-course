@@ -2,4 +2,4 @@ Modified the test status badge to load test results from my forked GitHub reposi
 
 [![iris-pipelines](https://github.com/niallguerin/serverless-ml-course/actions/workflows/features-and-predictions.yml/badge.svg)](https://github.com/niallguerin/serverless-ml-course/actions/workflows/features-and-predictions.yml)
 
-
+[![fraud-pipelines](https://github.com/niallguerin/serverless-ml-course/actions/workflows/fraud-feature-pipelines.yml/badge.svg)](https://github.com/niallguerin/serverless-ml-course/actions/workflows/fraud-feature-pipelines.yml)
